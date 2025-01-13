@@ -1,0 +1,83 @@
+using Application.Common.Interfaces.ClaimInterface;
+using Application.Common.Interfaces.KafkaInterface;
+using Application.Common.Models.ChapterModel;
+using Application.Constants;
+using Application.KafkaMessageModel;
+using Domain.CustomEntities;
+using Domain.QueriesFilter;
+using Infrastructure.Repositories.Interfaces;
+using Microsoft.Extensions.Options;
+
+namespace Application.Features.ChapterFeature.Queries;
+
+public record GetChapterBySubjectQuery : IRequest<PagedList<ChapterResponseModel>>
+{
+    public Guid SubjectId;
+    public Guid CurriculumId;
+    public ChapterQueryFilter QueryFilter;
+}
+
+public class GetChapterBySubjectQueryHandler : IRequestHandler<GetChapterBySubjectQuery, PagedList<ChapterResponseModel>>
+{
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+    private readonly PaginationOptions _paginationOptions;
+    private readonly ILogger<GetChapterBySubjectQueryHandler> _logger;
+    private readonly IProducerService _producerService;
+    private readonly IClaimInterface _claimService;
+    
+    public GetChapterBySubjectQueryHandler(IUnitOfWork unitOfWork, IMapper mapper, IOptions<PaginationOptions> paginationOptions,
+        IProducerService producerService, IClaimInterface claimService, ILogger<GetChapterBySubjectQueryHandler> logger)
+    {
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
+        _producerService = producerService;
+        _claimService = claimService;
+        _logger = logger;
+    }
+
+    public async Task<PagedList<ChapterResponseModel>> Handle(GetChapterBySubjectQuery request, CancellationToken cancellationToken)
+    {
+        request.QueryFilter.PageNumber = request.QueryFilter.PageNumber == 0 ? _paginationOptions.DefaultPageNumber : request.QueryFilter.PageNumber;
+        request.QueryFilter.PageSize = request.QueryFilter.PageSize == 0 ? _paginationOptions.DefaultPageSize : request.QueryFilter.PageSize;
+        var (listChapter, totalCount) = await _unitOfWork.ChapterRepository.GetChaptersBySubjectCurriculum(request.QueryFilter, request.CurriculumId, request.SubjectId);
+        if (!listChapter.Any())
+        {
+            return new PagedList<ChapterResponseModel>(new List<ChapterResponseModel>(), 0, 0, 0);
+        }
+        var mapperList = _mapper.Map<List<ChapterResponseModel>>(listChapter);
+        if (_claimService.GetCurrentUserId != Guid.Empty)
+        {
+            UserAnalyseMessageModel dataModel = new UserAnalyseMessageModel()
+            {
+                UserId = _claimService.GetCurrentUserId,
+                SubjectId = listChapter.First().SubjectCurriculum.SubjectId,
+            };
+            
+            _ = Task.Run(() =>
+            {
+                _producerService.ProduceObjectWithKeyAsync(TopicKafkaConstaints.UserAnalyseData, _claimService.GetCurrentUserId.ToString(), dataModel);
+            }, cancellationToken);
+            
+            if (_claimService.GetRole.Contains(RoleConstaint.STUDENT.ToString(), StringComparison.Ordinal))
+            {
+                var enroll = await _unitOfWork.EnrollmentRepository.Get(enroll => enroll.SubjectCurriculum.SubjectId == request.SubjectId && enroll.SubjectCurriculum.CurriculumId == request.CurriculumId && enroll.BaseUserId == _claimService.GetCurrentUserId);
+                if (enroll.FirstOrDefault() != null)
+                {
+                    for (int i = 0; i < mapperList.Count(); i++)
+                    {
+                        var chapterResponse = mapperList[i];
+                        var lessonList = await _unitOfWork.LessonRepository.Get(lesson => lesson.ChapterId == chapterResponse.Id);
+
+                        var progressList = await _unitOfWork.EnrollmentProgressRepository.Get(progress =>
+                                            progress.Lesson.Chapter.Id == chapterResponse.Id &&
+                                            progress.Enrollment.BaseUserId == _claimService.GetCurrentUserId);
+
+                        chapterResponse.IsDone = !lessonList.Any() ? true : (lessonList.Count() == progressList.Count());
+                    }
+                }
+            }
+        }
+        return new PagedList<ChapterResponseModel>(mapperList, totalCount, request.QueryFilter.PageNumber, request.QueryFilter.PageSize);
+    }
+}

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ServiceStack.Interfaces" Version="8.5.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TransactionService.Common\TransactionService.Common.csproj"/>
+        <ProjectReference Include="..\TransactionService.ReadModel\TransactionService.ReadModel.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Linq"/>
+        <Using Include="System.Threading.Tasks"/>
+        <Using Include="Starnet.Common"/>
+        <Using Include="ServiceStack"/>
+        <Using Include="TransactionService.ReadModel"/>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>72f9faed-8c22-4a9b-b652-c6ef6c9269fe</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Features\QuestionAnswerFeature\**" />
+      <Compile Remove="Features\QuizFeature\**" />
+      <Content Remove="Features\QuestionAnswerFeature\**" />
+      <Content Remove="Features\QuizFeature\**" />
+      <EmbeddedResource Remove="Features\QuestionAnswerFeature\**" />
+      <EmbeddedResource Remove="Features\QuizFeature\**" />
+      <None Remove="Features\QuestionAnswerFeature\**" />
+      <None Remove="Features\QuizFeature\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Algolia.Search" Version="7.6.1" />
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Carter" Version="8.2.1" />
+        <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
+        <PackageReference Include="Confluent.Kafka" Version="2.5.1" />
+        <PackageReference Include="EntityFramework" Version="6.5.1" />
+        <PackageReference Include="FluentValidation" Version="11.9.2" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+        <PackageReference Include="Google.Protobuf" Version="3.28.0" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.65.0" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.65.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.65.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="MediatR" Version="12.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Ardalis.GuardClauses" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Caches\" />
+      <Folder Include="Features\CategoryFeature\Validations\" />
+      <Folder Include="Features\EnrollmentFeature\Queries\" />
+      <Folder Include="Features\EnrollmentProcessFeature\Validators\" />
+      <Folder Include="Features\FolderFeature\Commands\" />
+      <Folder Include="Features\FolderFeature\Queries\" />
+      <Folder Include="Features\FolderFeature\Validators\" />
+      <Folder Include="Features\InformationFeature\Commands\SchoolDeleteCommand\" />
+      <Folder Include="Features\InformationFeature\Validations\" />
+      <Folder Include="Services\MaintainService\" />
+    </ItemGroup>
+    <ItemGroup>
+        <Protobuf Include="Protos\theory_service.proto" GrpcServices="server">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Protobuf>
+        <Protobuf Include="Protos\user_service.proto" GrpcServices="Client">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Protobuf>
+		<Protobuf Include="Protos\subject_service.proto" GrpcServices="server">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Protobuf>
+        <Protobuf Include="Protos\lesson_service.proto" GrpcServices="server">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Protobuf>
+	    <Protobuf Include="Protos\document_service.proto" GrpcServices="server">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Protobuf>
+		<Protobuf Include="Protos\flashcard_service.proto" GrpcServices="server">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Protobuf>
+	    <Protobuf Include="Protos\theory_service.proto" GrpcServices="server">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Protobuf>
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\SharedProject\SharedProject.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Protos\user_service.proto" />
+	 <None Remove="Protos\subject_service.proto" />
+    </ItemGroup>
+
+</Project>

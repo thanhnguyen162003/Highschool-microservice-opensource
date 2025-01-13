@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message SubjectExitsRequest {
+  repeated string subjectId = 1;
+}
+
+
+// Define the response message
+message SubjectExitsResponse {
+  repeated bool isSubjectExit = 1;
+}
+
+service SubjectServiceCheckRpc {
+  rpc CheckSubjectExit(SubjectExitsRequest) returns (SubjectExitsResponse);
+}
+
+

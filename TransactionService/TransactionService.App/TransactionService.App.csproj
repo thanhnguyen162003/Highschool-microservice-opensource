@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="DStack.Aggregates" Version="9.0.0"/>
+        <PackageReference Include="DStack.Aggregates.EventStoreDB" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0"/>
+        <PackageReference Include="Npgsql" Version="9.0.2"/>
+        <PackageReference Include="NServiceBus" Version="9.2.3"/>
+        <PackageReference Include="NServiceBus.Extensions.Hosting" Version="3.0.0"/>
+        <PackageReference Include="NServiceBus.Extensions.Logging" Version="3.0.0"/>
+        <PackageReference Include="NServiceBus.Heartbeat" Version="5.0.0"/>
+        <PackageReference Include="NServiceBus.Metrics" Version="5.0.0"/>
+        <PackageReference Include="NServiceBus.Metrics.ServiceControl" Version="5.0.0"/>
+        <PackageReference Include="NServiceBus.RabbitMQ" Version="9.2.0"/>
+        <PackageReference Include="NServiceBus.RavenDB" Version="9.0.0"/>
+        <PackageReference Include="RavenDB.Client" Version="6.2.2"/>
+        <PackageReference Include="Serilog" Version="4.2.0"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Settings.Configuration" Version="9.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Email" Version="4.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TransactionService.Domain.Impl\TransactionService.Domain.Impl.csproj"/>
+        <ProjectReference Include="..\TransactionService.Domain.NSBus\TransactionService.Domain.NSBus.csproj"/>
+        <ProjectReference Include="..\TransactionService.ReadModel.Queries.RavenDB\TransactionService.ReadModel.Queries.RavenDB.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="config\appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Linq"/>
+        <Using Include="System.Threading.Tasks"/>
+        <Using Include="Starnet.Common"/>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message DocumentRequest {
+	repeated string subjectId = 1;
+}
+message DocumentTipsRequest {
+	repeated string documentId = 1;
+}
+
+// Define the response message
+message DocumentResponse {
+	repeated string documentId = 1;
+}
+message DocumentTipsResponse {
+	repeated string documentId = 1;
+	repeated string documentName = 2;
+	repeated string documentSlug = 3;
+}
+
+service DocumentServiceRpc {
+	rpc GetDocumentId(DocumentRequest) returns (DocumentResponse);
+	rpc GetDocumentTips(DocumentTipsRequest) returns (DocumentTipsResponse);
+}

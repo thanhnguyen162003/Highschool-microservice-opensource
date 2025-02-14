@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NServiceBus" Version="9.2.3"/>
+        <PackageReference Include="NServiceBus.RabbitMQ" Version="9.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TransactionService.Common\TransactionService.Common.csproj"/>
+        <ProjectReference Include="..\TransactionService.WebApi.ServiceInterface\TransactionService.WebApi.ServiceInterface.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Linq"/>
+        <Using Include="System.Threading.Tasks"/>
+        <Using Include="Starnet.Common"/>
+    </ItemGroup>
+
+</Project>

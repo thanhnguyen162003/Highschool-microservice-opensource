@@ -1,0 +1,82 @@
+version: "3.8"
+
+services:
+   eventstore:
+    image: eventstore/eventstore:24.6.0-bookworm-slim
+    volumes:
+      - eventstore-data:/var/lib/eventstore
+      - eventstore-logs:/var/log/eventstore
+    ports:
+      - "2118:2118"
+    environment:
+      - EVENTSTORE_CLUSTER_SIZE=1
+      - EVENTSTORE_STATS_PERIOD_SEC=240
+      - EVENTSTORE_RUN_PROJECTIONS=All
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
+      - EVENTSTORE_SKIP_DB_VERIFY=True
+      - EVENTSTORE_SKIP_INDEX_VERIFY=True
+      - EVENTSTORE_INT_TCP_PORT=1118
+      - EVENTSTORE_HTTP_PORT=2118
+      - EVENTSTORE_CLUSTER_GOSSIP_PORT=2118
+      - EVENTSTORE_INSECURE=true
+      - EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
+    healthcheck:
+      disable: true
+    networks:
+      - dstack-network
+    deploy:
+      replicas: 1
+
+   postgresdb:
+    image: postgres:15.2-alpine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5439:5432"
+    environment:
+      - POSTGRES_PASSWORD=masterkey
+      - POSTGRES_DB=nsbus
+    networks:
+      - dstack-network
+    deploy:
+      replicas: 1
+
+   ravendb:
+      image: ravendb/ravendb:6.2.2-ubuntu.22.04-x64
+      volumes:
+        - ravendb-data:/var/lib/ravendb/data
+        - ravendb-config:/etc/ravendb
+      environment:
+        - RAVEN_Setup_Mode=None
+        - RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
+        - RAVEN_License_Eula_Accepted=true
+      ports:
+        - "8095:8080"
+      networks:
+        -  dstack-network
+      deploy:
+        replicas: 1
+
+   rabbitmq:
+    image: rabbitmq:3.13.7-management
+    hostname: rabbitmq
+    volumes:
+      - rabbitmq-db:/var/lib/rabbitmq/mnesia/
+    ports:
+      - "5675:5672"
+      - "15675:15672"
+    networks:
+      -  dstack-network
+    deploy:
+      replicas: 1
+
+networks:
+  dstack-network:
+
+volumes:
+  eventstore-data:
+  eventstore-logs:
+  pgdata:
+  ravendb-data:
+  ravendb-config:
+  rabbitmq-db:

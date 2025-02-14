@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+WORKDIR /app
+COPY dist/ .
+ENTRYPOINT ["dotnet", "TransactionService.App.dll"]
+

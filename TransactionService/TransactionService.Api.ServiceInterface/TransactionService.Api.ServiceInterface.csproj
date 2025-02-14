@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1"/>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
+        <PackageReference Include="NServiceBus" Version="9.2.3"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TransactionService.Api.ServiceModel\TransactionService.Api.ServiceModel.csproj"/>
+        <ProjectReference Include="..\TransactionService.PL\TransactionService.PL.csproj"/>
+        <ProjectReference Include="..\TransactionService.ReadModel\TransactionService.ReadModel.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Linq"/>
+        <Using Include="System.Threading.Tasks"/>
+        <Using Include="System.Collections.Generic"/>
+        <Using Include="Starnet.Common"/>
+        <Using Include="TransactionService.Common"/>
+        <Using Include="TransactionService.ReadModel"/>
+        <Using Include="AutoMapper"/>
+        <Using Include="Microsoft.AspNetCore.Mvc"/>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<NoWarn>1701;1702;1591</NoWarn>
+		<DocumentationFile>TransactionalService.Web.Core.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="TransactionalService.Web.Core.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="14.0.0" />
+		<PackageReference Include="Carter" Version="8.2.1" />
+		<PackageReference Include="Confluent.Kafka" Version="2.8.0" />
+		<PackageReference Include="FluentValidation" Version="11.11.0" />
+		<PackageReference Include="MediatR" Version="12.4.1" />
+		<PackageReference Include="payOS" Version="1.0.9" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TransactionalService.Application\TransactionalService.Application.csproj" />
+		<ProjectReference Include="..\TransactionalService.Database.Migrations\TransactionalService.Database.Migrations.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Feature\PaymentFeature\Commands\" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TransactionalService.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Application.Constants.UtilityConstant.DocumentInformation">
+            <summary>
+            KEEP IT HERE, DO NOT DELETE
+            </summary>
+        </member>
+    </members>
+</doc>

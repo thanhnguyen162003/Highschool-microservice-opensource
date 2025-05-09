@@ -1,0 +1,38 @@
+﻿using Application.Common.Models.SubmissionContent;
+using Application.Common.Models.TestContent;
+using Domain.Entity;
+
+namespace Application.Common.Models.AssignmentModel;
+
+public partial class AssignmentDetailResponseModel
+{
+    public Guid Id { get; set; }
+
+    public Guid ZoneId { get; set; }
+
+    public string? Type { get; set; }
+
+    public string? Title { get; set; }
+
+    public string? Noticed { get; set; }
+
+    public int? TotalQuestion { get; set; }
+
+    public int? TotalTime { get; set; }
+
+    public DateTime? AvailableAt { get; set; }
+
+    public DateTime? DueAt { get; set; }
+
+    public DateTime? LockedAt { get; set; }
+
+    public bool? Published { get; set; }
+    public bool? Submitted { get; set; }
+    public int SubmissionsCount { get; set; }
+    public Guid? CreatedBy { get; set; }
+
+    public ICollection<TestContentResponseModel> Questions { get; set; } = new List<TestContentResponseModel>();
+
+    public ICollection<SubmissionResponseModel> Submissions { get; set; } = new List<SubmissionResponseModel>();
+
+}

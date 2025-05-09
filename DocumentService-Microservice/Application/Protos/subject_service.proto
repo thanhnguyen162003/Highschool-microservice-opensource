@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message SubjectNameRequest {
+	repeated string subjectName = 1;
+}
+message SubjectGradeRequest {
+	repeated string subjectId = 1;
+}
+message SubjectEnrollCheckRequest {
+	repeated string subjectId = 1;
+	repeated string userId = 2;
+}
+
+// Define the response message
+message SubjectNameResponse {
+	repeated string subjectName = 1;
+}
+message SubjectGradeResponse {
+	repeated string subjectId = 1;
+	repeated string grade = 2;
+}
+message SubjectEnrollCheckResponse {
+	repeated string subjectId = 1;
+	repeated string userId = 2;
+}
+service SubjectServiceRpc {
+	rpc CheckSubjectName(SubjectNameRequest) returns (SubjectNameResponse);
+	rpc GetSubjectGrade(SubjectGradeRequest) returns (SubjectGradeResponse);
+	rpc GetSubjectEnroll(SubjectEnrollCheckRequest) returns (SubjectEnrollCheckResponse);
+}
+
+
+

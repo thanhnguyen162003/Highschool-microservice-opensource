@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>139013ea-7796-44a3-86bb-dd22abb67737</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Features\DocumentFeature\Events\**" />
+      <Compile Remove="Features\NewsFeature\Validator\**" />
+      <Compile Remove="Services\GrpcService\**" />
+      <Content Remove="Features\DocumentFeature\Events\**" />
+      <Content Remove="Features\NewsFeature\Validator\**" />
+      <Content Remove="Services\GrpcService\**" />
+      <EmbeddedResource Remove="Features\DocumentFeature\Events\**" />
+      <EmbeddedResource Remove="Features\NewsFeature\Validator\**" />
+      <EmbeddedResource Remove="Services\GrpcService\**" />
+      <None Remove="Features\DocumentFeature\Events\**" />
+      <None Remove="Features\NewsFeature\Validator\**" />
+      <None Remove="Services\GrpcService\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.301" />
+      <PackageReference Include="AWSSDK.S3" Version="3.7.402.7" />
+      <PackageReference Include="Azure.Storage.Blobs" Version="12.24.0-beta.1" />
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+      <PackageReference Include="Carter" Version="8.2.1" />
+      <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
+      <PackageReference Include="Confluent.Kafka" Version="2.5.1" />
+      <PackageReference Include="Dapr.AspNetCore" Version="1.14.0" />
+      <PackageReference Include="dotenv.net" Version="3.2.0" />
+      <PackageReference Include="EntityFramework" Version="6.5.1" />
+      <PackageReference Include="FluentValidation" Version="11.9.2" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+      <PackageReference Include="itext" Version="9.1.0" />
+      <PackageReference Include="itext7.bouncy-castle-adapter" Version="9.1.0" />
+      <PackageReference Include="MediatR" Version="12.4.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+      <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+      <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.8" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.7" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+      <PackageReference Include="StackExchange.Redis" Version="2.8.16" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+      <PackageReference Include="Ardalis.GuardClauses" Version="4.6.0" />
+      <PackageReference Include="Google.Protobuf" Version="3.28.0" />
+      <PackageReference Include="Grpc.AspNetCore" Version="2.65.0" />
+      <PackageReference Include="Grpc.Net.Client" Version="2.65.0" />
+      <PackageReference Include="Grpc.Tools" Version="2.66.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
+    </ItemGroup>
+  
+
+  <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\SharedProject\SharedProject.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Protobuf Include="Protos\lesson_service.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+      <Protobuf Include="Protos\user_service.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+      <Protobuf Include="Protos\subject_service_check.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+    <Protobuf Include="Protos\flashcard_service.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+          <Protobuf Include="Protos\document_service.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+          <Protobuf Include="Protos\theory_service.proto" GrpcServices="Client">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Protobuf>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Common\Models\SubjectModel\" />
+      <Folder Include="Features\TheoryFeature\Events\" />
+      <Folder Include="Features\VideoFeature\Queries\" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message TheoryTipsRequest {
+	repeated string theoryId = 1;
+}
+
+
+// Define the response message
+message TheoryTipsResponse {
+	repeated string theoryId = 1;
+	repeated string theoryName = 2;
+}
+
+service TheoryServiceRpc {
+	rpc GetTheoryTips(TheoryTipsRequest) returns (TheoryTipsResponse);
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message LessonCheckRequest {
+  repeated string lessonId = 1;
+}
+
+
+// Define the response message
+message LessonCheckResponse {
+  repeated bool lessonExits = 1;
+}
+
+service LessonServiceCheckRpc {
+  rpc CheckLessonExit(LessonCheckRequest) returns (LessonCheckResponse);
+}
+
+

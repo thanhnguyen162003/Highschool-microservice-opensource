@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package Application;
+
+message SubjectCurriculumNameRequest {
+	repeated string subjectCurriculumName = 1;
+}
+
+// Define the response message
+message SubjectCurriculumNameResponse {
+	repeated string subjectCurriculumName = 1;
+}
+
+
+service SubjectCurriculumServiceRpc {
+	rpc CheckSubjectCurriculumName(SubjectCurriculumNameRequest) returns (SubjectCurriculumNameResponse);
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package Application;
+
+message EnrollmentRequest {
+  repeated string userId = 1;
+}
+
+
+message EnrollmentResponse {
+  repeated EnrollmentObject enrollment = 1;
+}
+
+message EnrollmentObject{
+	string userId = 1;
+	repeated string lessonLearnDate = 2;
+}
+
+
+service EnrollmentServiceRpc {
+  rpc GetEnrollment(EnrollmentRequest) returns (EnrollmentResponse);
+}

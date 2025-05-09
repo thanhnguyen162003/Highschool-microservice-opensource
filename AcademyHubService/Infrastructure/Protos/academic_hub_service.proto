@@ -1,0 +1,27 @@
+﻿syntax = "proto3";
+
+package Application;
+
+// Define the request message for getting user details
+message GetAcademicUserRequest {
+  repeated string emails = 1; // The user name to fetch details for
+}
+
+// Define the response message containing user details
+message AcademicUserResponse {
+  string user_id = 1;    
+  string username = 2; 
+  string role = 3;  
+  string avatar = 4;
+  string full_name = 5;
+  string email = 6;
+}
+
+message ObjectListResponse {
+  repeated AcademicUserResponse objects = 1;
+}
+
+// Define the UserService gRPC service
+service AcademicServiceRpc {
+  rpc GetUsers(GetAcademicUserRequest) returns (ObjectListResponse);
+}

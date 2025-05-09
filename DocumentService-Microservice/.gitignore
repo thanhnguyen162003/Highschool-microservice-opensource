@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.DS_Store
+/.idea/
+/.vs/
+DocumentService-Microservice.sln.DotSettings.user
+/Application/Application.csproj.user

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message SubjectNameRequest {
+	repeated string subjectName = 1;
+}
+
+
+// Define the response message
+message SubjectNameResponse {
+	repeated string subjectName = 1;
+}
+
+service SubjectServiceRpc {
+	rpc CheckSubjectName(SubjectNameRequest) returns (SubjectNameResponse);
+}
+
+
+

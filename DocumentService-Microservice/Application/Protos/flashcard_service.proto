@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message FlashcardRequest {
+	repeated string subjectId = 1;
+}
+message FlashcardTipsRequest {
+	repeated string flaschcardId = 1;
+}
+message UserFlashcardLearningRequest {
+}
+
+
+// Define the response message
+message FlashcardResponse {
+	repeated string flashcardId = 1;
+}
+message UserFlashcardLearningResponse {
+	repeated UserFlashcardLearning userFlashcardLearning = 1;
+}
+message UserFlashcardLearning {
+	string userId = 1;
+	string flashcardId = 2;
+	string flashcardContentId = 3;
+	repeated string lastReviewDateHistory = 4;
+	repeated double timeSpentHistory = 5;
+}
+message FlashcardTipsResponse {
+	repeated string flaschcardId = 1;
+	repeated string flaschcardName = 2;
+	repeated string flaschcardSlug = 3;
+}
+
+service FlashcardServiceRpc {
+	rpc GetUserFlashcardLearning(UserFlashcardLearningRequest) returns (UserFlashcardLearningResponse);
+	rpc GetFlashcardId(FlashcardRequest) returns (FlashcardResponse);
+	rpc GetFlashcardTips(FlashcardTipsRequest) returns (FlashcardTipsResponse);
+}

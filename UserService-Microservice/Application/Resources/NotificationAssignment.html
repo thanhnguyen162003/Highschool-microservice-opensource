@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Assignment Notification</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table role="presentation" style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <!-- Header -->
+                    <tr>
+                        <td style="background-color: #4F46E5; padding: 30px 20px; text-align: center;">
+                            <table role="presentation" style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <h1 style="color: #ffffff; margin: 0; font-size: 24px;">Assignment Notification</h1>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 30px 20px;">
+                            <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
+                                Hi Student,
+                            </p>
+                            <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
+                                A new assignment has been posted in <strong>@Model.ZoneName</strong> Zone. Please review the details below:
+                            </p>
+
+                            <!-- Assignment Details -->
+                            <table role="presentation" style="width: 100%; margin: 20px 0; background-color: #F0F9FF; border-radius: 6px; padding: 20px;">
+                                <tr>
+                                    <td>
+                                        <table role="presentation" style="width: 100%;">
+                                            <tr>
+                                                <td>
+                                                    <table role="presentation" style="width: 100%;">
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    🎫 <strong>Title:</strong> @Model.Title
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    📅 <strong>Due Date:</strong> @Model.Time
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    ⌛ <strong>Total Time:</strong> @Model.TotalTime
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    🎓 <strong>Type:</strong> @Model.Type
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    ⭐ <strong>Points:</strong> 10/10
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 10px;">
+                                                                <p style="margin: 0; color: #374151; font-size: 15px;">
+                                                                    📎 <strong>Total Questions:</strong> @Model.TotalQuestion
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- CTA Button -->
+                            <table role="presentation" style="width: 100%; margin: 30px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="@Model.AssignmentLink]" style="display: inline-block; padding: 14px 30px; background-color: #4F46E5; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">View Assignment</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Additional Information -->
+                            <table role="presentation" style="width: 100%; margin: 20px 0; background-color: #F3F4F6; border-radius: 6px; padding: 15px;">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0; color: #4B5563; font-size: 14px; line-height: 1.5;">
+                                            💡 <strong>Noticed:</strong><br>
+                                            @Model.Noticed
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="margin: 20px 0 0; color: #374151; font-size: 16px; line-height: 1.6;">
+                                Good luck with your assignment!
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #4F46E5; padding: 20px; text-align: center; border-top: 1px solid #E5E7EB;">
+                            <p style="margin: 0 0 10px; color: whitesmoke; font-size: 14px;">
+                                This is an automated message from your learning management system.
+                            </p>
+                            <p style="margin: 0 0 10px; color: whitesmoke; font-size: 14px;">
+                                If you need help, please contact your instructor or support team.
+                            </p>
+                            <p style="margin: 0; color: whitesmoke; font-size: 10px;">
+                                Copyright © 2024, HighSchoolVN
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

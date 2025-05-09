@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package Application;
+
+
+message FlashcardTipsRequest {
+	repeated string flaschcardId = 1;
+}
+
+
+
+message FlashcardTipsResponse {
+	repeated string flaschcardId = 1;
+	repeated string flaschcardName = 2;
+	repeated string flaschcardSlug = 3;
+}
+
+service FlashcardServiceRpc {
+	rpc GetFlashcardTips(FlashcardTipsRequest) returns (FlashcardTipsResponse);
+}

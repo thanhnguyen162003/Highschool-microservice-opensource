@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+package Application;
+
+message CheckResourceExistsRequest {
+    string resource_id = 1;
+    string resource_type = 2;
+}
+
+message ResourceCheckResult {
+    string resource_id = 1;   
+    bool exists = 2;         
+    string resource_type = 3; 
+}
+
+message CheckResourceExistsResponse {
+    ResourceCheckResult result = 1; 
+}
+
+service DocumentServiceRpc {
+    rpc CheckResourceExists(CheckResourceExistsRequest) returns (CheckResourceExistsResponse);
+}

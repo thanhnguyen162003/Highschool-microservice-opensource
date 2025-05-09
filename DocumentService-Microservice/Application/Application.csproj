@@ -1,0 +1,81 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>72f9faed-8c22-4a9b-b652-c6ef6c9269fe</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Features\EnrollmentProcessFeature\Validators\**" />
+      <Content Remove="Features\EnrollmentProcessFeature\Validators\**" />
+      <EmbeddedResource Remove="Features\EnrollmentProcessFeature\Validators\**" />
+      <None Remove="Features\EnrollmentProcessFeature\Validators\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="token.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Algolia.Search" Version="7.6.1" />
+        <PackageReference Include="AutoMapper" Version="14.0.0" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+        <PackageReference Include="Carter" Version="8.2.1" />
+        <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
+        <PackageReference Include="Confluent.Kafka" Version="2.5.1" />
+        <PackageReference Include="Dapr.AspNetCore" Version="1.14.0" />
+        <PackageReference Include="EntityFramework" Version="6.5.1" />
+        <PackageReference Include="FluentValidation" Version="11.9.2" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+        <PackageReference Include="Google.Apis.Calendar.v3" Version="1.69.0.3667" />
+        <PackageReference Include="MediatR" Version="12.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
+        <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.7.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.7.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8" /> <!-- Updated version -->
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="8.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="OpenAI" Version="2.1.0" />
+        <PackageReference Include="PdfPig" Version="0.1.9" />
+        <PackageReference Include="Polly" Version="8.5.2" />
+        <PackageReference Include="RestSharp" Version="112.1.0" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+        <PackageReference Include="StackExchange.Redis" Version="2.8.31" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="System.Reactive" Version="6.0.1" />
+        <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
+    </ItemGroup>
+
+    <!-- Rest of your ItemGroup and ProjectReference entries remain the same -->
+    <ItemGroup>
+        <Folder Include="Caches\" />
+        <Folder Include="Features\ContainerFeature\Validators\" />
+        <Folder Include="Features\InformationFeature\Commands\SchoolDeleteCommand\" />
+        <Folder Include="Features\InformationFeature\Validations\" />
+        <Folder Include="Features\StarredTermFeature\Queries\" />
+        <Folder Include="Features\StudiableTermFeature\Validators\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\Domain\Domain.csproj" />
+        <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+        <ProjectReference Include="..\SharedProject\SharedProject.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="token.json" />
+    </ItemGroup>
+
+</Project>

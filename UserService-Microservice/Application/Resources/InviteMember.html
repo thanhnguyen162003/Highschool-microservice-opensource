@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Our Online Study Group</title>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+    <table role="presentation"
+           style="width: 100%; border-collapse: collapse; background-color: #f4f4f4; padding: 20px;">
+        <tr>
+            <td align="center">
+                <table role="presentation"
+                       style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <!-- Banner Image (if provided) -->
+                    <tr>
+                        <td style="text-align: center;">
+                            <img src="@Model.BannerUrl" alt="Study Group Banner"
+                                 style="max-width: 100%; height: auto;">
+                        </td>
+                    </tr>
+
+                    <!-- Logo and Group Name -->
+                    <tr>
+                        <td style="padding: 30px 20px 20px; text-align: center;">
+                            <img src="@Model.LogoUrl" alt="Study Group Logo"
+                                 style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 15px;">
+                            <h1 style="margin: 0; color: #111827; font-size: 24px;">Zone Invitation</h1>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td style="padding: 0 20px 30px;">
+                            <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
+                                Hi @Model.StudentName,
+                            </p>
+                            <p style="margin: 0 0 20px; color: #374151; font-size: 16px; line-height: 1.6;">
+                                You've been invited to join @Model.ZoneName Zone to study group!
+                            </p>
+
+                            <!-- Group Details -->
+                            <table role="presentation"
+                                   style="width: 100%; margin: 20px 0; background-color: #F3F4F6; border-radius: 6px; padding: 20px;">
+                                <tr>
+                                    <td>
+                                        <p style="margin: 0 0 10px; color: #374151; font-size: 16px;">
+                                            🔑 <strong>Role:</strong> @Model.Role
+                                        </p>
+                                        <p style="margin: 0 0 10px; color: #374151; font-size: 16px;">
+                                            👥 <strong>Created by:</strong> @Model.CreatedBy
+                                        </p>
+                                        <p style="margin: 0 0 10px; color: #374151; font-size: 16px;">
+                                            ⏰ <strong>Time:</strong> @Model.CreatedAt
+                                        </p>
+                                        <p style="margin: 0; color: #374151; font-size: 16px;">
+                                            📝 <strong>Description:</strong> @Model.Description
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- CTA Button -->
+                            <table role="presentation" style="width: 100%; margin: 30px 0;">
+                                <tr>
+                                    <td align="center">
+                                        <a href="@Model.AcceptLink"
+                                           style="display: inline-block; padding: 14px 30px; background-color: green; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">
+                                            Accept Invitation
+                                        </a>
+                                        <a href="@Model.RejectLink"
+                                           style="display: inline-block; padding: 14px 30px; background-color: red; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">
+                                            Reject Invitation
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="margin: 0; color: #6B7280; font-size: 14px; text-align: center;">
+                                This is an invitation to join an online study group. If you didn't expect this
+                                invitation, please ignore this email.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #4F46E5; padding: 20px; text-align: center; border-top: 1px solid #E5E7EB;">
+                            <p style="margin: 0; color: whitesmoke; font-size: 14px;">
+                                Copyright © 2024, HighSchoolVN
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair Display:ital,wght@0,400..900;1,400..900&display=swap"
+          rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            background-color: white;
+            /* background: url('~/Images/Orange Gradient Sunset Desktop Wallpaper.png') no-repeat center center fixed;
+                    background-size: cover */
+        }
+
+        .email-content {
+            /* background: url('~/Images/Orange Gradient Sunset Desktop Wallpaper.png') no-repeat center center fixed;
+                    background-size: cover; */
+            border-radius: 20px;
+            border: 1.5px solid #e6658a;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+
+        .email-header {
+            background-color: #e6658a;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            font-family: "Playfair Display", serif;
+            color: black;
+            font-size: 30px;
+            height: 60px;
+            display: flex;
+        }
+
+        .email-body {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #ffffff;
+            background-color: #ff4757;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            font-family: "Playfair Display";
+        }
+
+            a:hover {
+                background-color: #e03e50;
+            }
+
+        .email-footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+            .email-footer p {
+                font-size: 12px;
+                color: #999;
+                margin: 5px 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-content">
+            <div class="email-header">
+                <h3 style="margin: 0 auto; color: white;">HighSchool</h3>
+            </div>
+            <div class="email-body" style="color: black;">
+                <h1>Verify your email address</h1>
+                <p>Welcome @Model.UserName.</p>
+                <p>
+                    Please copy this code and paste in the signin website to
+                    activate your account.
+                </p>
+                <h2>@Model.OTP</h2>
+                <p>
+                    this is an automated email. Please do not reply this email
+                </p>
+            </div>
+            <div class="email-footer">
+                <p>Copyright © 2024, HighSchool</p>
+                <p>If you do not wish to receive these emails, simply ignore it.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

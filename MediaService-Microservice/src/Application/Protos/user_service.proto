@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package Application;
+
+message UserMediaRequest {
+	string userId = 1; 
+}
+
+message UserMediaResponse {
+  repeated string user_id = 1;    
+  repeated string username = 2; 
+  repeated string image = 3; 
+}
+
+// Define the UserService gRPC service
+service UserServiceRpc {
+  rpc GetUserMedia(UserMediaRequest) returns (UserMediaResponse);
+}

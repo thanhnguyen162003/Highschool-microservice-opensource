@@ -1,0 +1,55 @@
+syntax = "proto3";
+package Application;
+
+// Define the request message for getting user details
+message GetUserRequest {
+  string username = 1; // The user name to fetch details for
+}
+message UserMediaRequest {
+	string userId = 1; 
+}
+message UserCountRequest {
+	string type =1;
+	int32 amount =2;
+	bool isCount =3;
+}
+message UserLoginCountRequest {
+}
+// Define the response message containing user details
+message UserResponse {
+  string user_id = 1;    
+  string username = 2; 
+  string email = 3;
+  int32 role_id = 4;  
+  string avatar = 5;
+  string full_name = 6;
+}
+message UserLoginCountResponse {
+  repeated UserRetention retention = 1;    
+}
+message UserMediaResponse {
+  repeated string user_id = 1;    
+  repeated string username = 2; 
+  repeated string image = 3; 
+}
+message UserCountResponse {
+  repeated UserActivity activities = 1;
+}
+message UserRetention {
+  string user_id = 1; // Date of activity
+  string date = 2;
+  string role_id = 3;
+}
+message UserActivity {
+  string date = 1; // Date of activity
+  int32 students = 2;
+  int32 teachers = 3;
+  int32 moderators = 4;
+}
+// Define the UserService gRPC service
+service UserServiceRpc {
+  rpc GetUserLoginCount(UserLoginCountRequest) returns (UserLoginCountResponse);
+  rpc GetCountUser(UserCountRequest) returns (UserCountResponse);
+  rpc GetUser(GetUserRequest) returns (UserResponse);
+  rpc GetUserMedia(UserMediaRequest) returns (UserMediaResponse);
+}

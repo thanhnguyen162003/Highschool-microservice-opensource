@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package Application;
+
+// Define the request message
+message DocumentRequest {
+	repeated string subjectId = 1;
+}
+message DocumentTipsRequest {
+	repeated string documentId = 1;
+}
+
+message CheckResourceExistsRequest {
+	string resource_id = 1;    
+	string resource_type = 2;
+}
+
+message ResourceCheckResult {
+	string resource_id = 1;
+	bool exists = 2;
+	string resource_type = 3;
+}
+
+message CheckResourceExistsResponse {
+	ResourceCheckResult result = 1;
+}
+
+// Define the response message
+message DocumentResponse {
+	repeated string documentId = 1;
+}
+message DocumentTipsResponse {
+	repeated string documentId = 1;
+	repeated string documentName = 2;
+	repeated string documentSlug = 3;
+}
+
+service DocumentServiceRpc {
+	rpc GetDocumentId(DocumentRequest) returns (DocumentResponse);
+	rpc GetDocumentTips(DocumentTipsRequest) returns (DocumentTipsResponse);
+	rpc CheckResourceExists(CheckResourceExistsRequest) returns (CheckResourceExistsResponse);
+}

@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Events\**" />
+      <Compile Remove="Exceptions\**" />
+      <EmbeddedResource Remove="Events\**" />
+      <EmbeddedResource Remove="Exceptions\**" />
+      <None Remove="Events\**" />
+      <None Remove="Exceptions\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+      <PackageReference Include="MediatR" Version="12.4.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+      <PackageReference Include="MongoDB.Bson" Version="2.28.0" />
+      <PackageReference Include="MongoDB.Driver" Version="2.28.0" />
+      <PackageReference Include="MongoDB.EntityFrameworkCore" Version="8.1.0" />
+      <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+      <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
+    </ItemGroup>
+
+</Project>

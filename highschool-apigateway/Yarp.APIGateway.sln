@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.APIGateway", "Yarp.APIGateway\Yarp.APIGateway.csproj", "{37F999B5-F215-4633-A56E-319B28CF9C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yarp.APIGateway.ServiceDefaults", "Yarp.APIGateway.ServiceDefaults\Yarp.APIGateway.ServiceDefaults.csproj", "{AC418CCC-99BC-478F-9078-59CC736795B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37F999B5-F215-4633-A56E-319B28CF9C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F999B5-F215-4633-A56E-319B28CF9C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F999B5-F215-4633-A56E-319B28CF9C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F999B5-F215-4633-A56E-319B28CF9C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC418CCC-99BC-478F-9078-59CC736795B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC418CCC-99BC-478F-9078-59CC736795B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC418CCC-99BC-478F-9078-59CC736795B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC418CCC-99BC-478F-9078-59CC736795B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

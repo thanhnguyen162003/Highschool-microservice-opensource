@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>0902efe4-72f3-4224-80dc-c76bf2a5cc55</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.2.0" />
+    <PackageReference Include="Aspire.Hosting.Kafka" Version="9.2.0" />
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Dapr" Version="9.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnalyseService-Microservice\src\Application\Application.csproj" />
+    <ProjectReference Include="..\DocumentService-Microservice\Application\Application.csproj" />
+    <ProjectReference Include="..\highschool-apigateway\Yarp.APIGateway\Yarp.APIGateway.csproj" />
+    <ProjectReference Include="..\UserService-Microservice\Application\Application.csproj" />
+  </ItemGroup>
+
+</Project>
